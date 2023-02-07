@@ -6,7 +6,8 @@
     --white: #fff;
     --lightgray: rgb(247, 247, 247); 
     --black: rgba(0,0,0); 
-    --green: #7ED957;
+    --green: rgb(250, 207,15);
+    /* --green: #7ED957; */
     --text: rgb(51,51,51);
     --about: #FCFDF5;
 }
@@ -19,7 +20,7 @@ body{
 /* --------home style ----- */
 /* linear-gradient(rgba(206, 240, 223, 0.4)50%, rgba(206, 240, 223, 0.4)50%), */
 #home{
-    background:  url(photos/flowerws-tiles.jfif);
+    background:  url(photos/white_comp1.jpg);
     height: 100vh;
     background-repeat: no-repeat;
     background-size:cover;
@@ -32,7 +33,7 @@ body{
     background: var(--white);
     align-items: center;
     justify-content: space-between;
-    padding: .2rem .10rem;
+    padding: .2rem 2rem;
     width: 100vw;
     z-index: 16;
     position: fixed;
@@ -44,7 +45,7 @@ body{
     display: flex;
     align-items: center;
     font-size: large;
-    font-weight: 800;
+    font-weight: 600;
     margin: .5rem;
 }
 .logo img{
@@ -56,6 +57,7 @@ body{
 .navlist ul{
     margin: 0;
     padding: 0;
+    padding-right: 3rem;
     display: flex;
     transition: 2s;
 }
@@ -98,6 +100,7 @@ body{
     .navbar{
         flex-direction: column;
         align-items: flex-start;
+        padding: .2rem 0;
     }
     .navlist {
         display: none;
@@ -105,6 +108,7 @@ body{
     .navlist ul{
         width: 100%;
         flex-direction: column;
+        padding-right: unset;
         
     }
     .navlist ul li{
@@ -388,10 +392,12 @@ body{
 
 
 #messages{
-    background: url(photos/flower.jfif);
+    background:  whitesmoke;
     background-size: cover;
     /* background: var(--lightgray); */
-    padding: 7vh 10%;
+    padding: 2vh 10%;
+    padding-bottom: 10vh;
+    margin: auto;
     margin-top: 80px;
 }
 #messages .form1{
@@ -399,6 +405,9 @@ body{
     margin-top: 60px;
     padding: 50px 70px;
     border-radius: 10px;
+    box-shadow: 0 0 7px var(--black);
+    margin: auto;
+    width: 60%;
 }
 #messages input{
     border: none;
@@ -421,7 +430,11 @@ body{
     resize: none;
     margin-bottom: 35px;
 }
-#messages p{
+.message_desc{
+    text-align: center;
+    padding: 0 10%;
+}
+.form1 p{
     font-weight: 600;
     color: var(--text);
     margin-bottom: 10px;
@@ -444,6 +457,7 @@ body{
     #messages .form1{
         padding: 10px;
         padding-bottom:30px;
+        width: 95%;
     }
     #messages input{
         width: 88%;
@@ -455,8 +469,217 @@ body{
 }
 
 
+/* ------------footer ------------- */
+.social2{
+    font-size: xx-large;
+   
+
+}
+.social2 a{
+    text-decoration: none;
+    color: var(--white);
+    padding-right: 10px;
+}
+
+#footer{
+    background: var(--black);
+    color: var(--white);
+    padding: 3vh 5%;
+    padding-bottom: 20px;
+}
+.container2{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5vh;
+}
+.form2 input{
+    padding: 10px 20px;
+    width: 50%;
+    border: 0;
+    outline: none;
+    font-size: larger;
+    border-radius: 5px;
+}
+.form2 button{
+    padding: 10px 15px;
+    font-size: larger;
+    background: var(--green);
+    border-radius: 5px;
+}
+.form2 button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.subscribe{
+    flex-basis: 60%;
+}
+.copyright{
+    text-align: center;
+    padding: 3vh 0;
+}
+
+@media (max-width: 700px) {
+    .subscribe{
+        flex-basis: 99%;
+    }
+    
+}
 
 
+
+
+/* -------------article ----------------- */
+#article_image{
+    width: 30vw;
+    height: 50vh;
+}
+
+
+.article{
+    padding: 100px 10%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#title{ 
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: rgb(202, 39, 39);
+}
+.article p{
+    margin-top: 30px;
+    line-height: 25px;
+    font-size: 16px;
+}
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%);
+    padding: 16px;
+    padding-left: 40px;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+    left: 2%;
+
+}
+.icons>a{
+    font-size: 32px;
+    margin: 12px 0;
+    transition: 500ms;
+}
+.icons>a:hover{
+    transform: scale(1.2);
+}
+.fa-facebook-official{
+    color: #1877f2;
+}
+.fa-linkedin-square{
+    color: #0077b5;
+}
+.fa-whatsapp{
+    color: #128c7e;
+}
+.fa-pinterest-square{
+    color: #e60023; 
+}
+.fa-instagram{
+    color: #f77737;
+}
+
+@media (max-width: 700px){
+    .article{
+        padding: 8px 32px;
+    }
+    .icons{
+        transform: unset;
+        top: unset;
+        width: 100%;
+        flex-direction: row;
+        bottom: 0;
+        padding: 0 ;
+        box-shadow: 7px 0px 8px rgba(0,0,0,0.3);
+        position: fixed;
+        justify-content: center;
+
+    }
+    .icons>a{
+        margin: 0 5vw;
+    }
+    #article_image{
+        width: 80vw;
+    }
+    .article{
+        padding-top: 150px;
+    }
+
+}
+
+
+
+
+/* --------login ---------------- */
+.login{
+    background: linear-gradient(rgba(15, 15, 15, 0.4)50%, rgba(15, 15, 15, 0.4)50%), url(photos/white.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.form{
+    width: 250px;
+    height: 330px;
+    color: #fff;
+    background: black;
+    /* background: linear-gradient(to top, rgba(0,0,0,0.8)50%, rgba(0,0,0,0.8)50%); */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border-radius: 10px;
+}
+.form h1{
+    font-size: 30px;
+    color: var(--green);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form input{
+    width: 100%;
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    font-size: 15x;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.form input[type="submit"]{
+    background: var(--green);
+    color: var(--black);
+    width: 50%;
+    font-size: 16px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.3s;
+    border: none;
+}
+
+.form input[type="submit"]:hover{
+    opacity: 0.8;
+    font-weight: bold;
+}
 
 
 

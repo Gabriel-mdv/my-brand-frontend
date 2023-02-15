@@ -18,6 +18,9 @@
     <title>MY BRAND</title>
 </head>
 <body>
+    <!-- <script src="//code.tidio.co/74uvqr4xxi4bh2gyivop2tyefpkpsn7f.js" async></script> -->
+
+
     <div class="container">
         <div id="home">
             <div class="navbar">
@@ -54,12 +57,12 @@
             </div>
 
             <!-- ----- chat with me ------  -->
-            <a href="#" class="chat">
+            <!-- <a href="#" class="chat">
                 <span>Chat with me 👋</span>
                 <div class="message">
                 <i class="fa fa-commenting" aria-hidden="true"></i>
                 </div>
-            </a>
+            </a> -->
 
             <!-- -------- hero section --------  -->
             <div class="hero">
@@ -204,20 +207,31 @@
                 collaborate and make a positive impact together</P>
 
             
-            <div class="form1">
+            <form class="form1" onsubmit={sendMessage(event)}>
                 <p>Name</p>
-                <input type="text" placeholder="Enter Your Name">
+                <div>
+                    <input  id="name" type="text"  placeholder="Enter Your Name">
+                    <span class="output success"></span>
+                </div>
                 <p>Email</p>
-                <input type="text" name="email" id="email" placeholder="Enter Your Email">
+                <div>
+                    <input  type="text"  id="email" placeholder="Enter Your Email">
+                    <span class="output success">*Enter a valid email please!</span>
+                </div>
                 <p>Message</p>
-                <textarea id="detail" name="detail" rows="10" cols="50" placeholder="Enter Your Message">
-                  
-                </textarea>
-
-                <span>
-                    <a href="#" class="big_button">SUBMIT</a>
+                <div>
+                    <textarea id="message"  rows="20" cols="50" ></textarea>
+                    <span class="output success">*Enter your message please!</span>    
+                </div>
+               
+        
+                <span class="submit_button">
+                <button type="submit" id="form_submit">
+                    SUBMIT
+                </button>
                 </span>
-            </div>
+
+            </form>
         
             
             

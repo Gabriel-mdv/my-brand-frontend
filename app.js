@@ -118,3 +118,11 @@ function success(element){
     displayError.classList.add('success');
     console.log(element.value)    
 }
+
+sub1 = document.getElementById('sub1')
+subs = JSON.parse(localStorage.getItem('users')) || []
+function subscribe(){
+    users.push(user);
+    
+}
+

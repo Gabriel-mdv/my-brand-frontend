@@ -700,7 +700,8 @@ body{
     color: gray;
 }
 .blog_image{
-    width: 60%;
+    min-width: 70%;
+    max-width: 70%;
     padding: 4vh 0;
 }
 .blog_content{
@@ -776,6 +777,7 @@ body{
 }
 .rel_item{
     flex-basis: 32%;
+    cursor: pointer;
 }
 .related h2{
     padding-bottom: 7vh;
@@ -1072,9 +1074,20 @@ body{
     height: auto;
     padding-right: 40px;
     padding-top: 16px;
+    cursor: pointer;
 }
 .c_desc p{
     margin-bottom: -10px;
+}
+.category{
+    color: var(--red);
+    cursor: pointer;
+}
+.category:hover{
+    color: #46a71d;
+}
+.c_desc h2{
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {

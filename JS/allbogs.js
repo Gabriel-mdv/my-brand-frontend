@@ -16,10 +16,11 @@ console.log(collection)
 
 // ___________ setting up the local storage ______________- 
 articles = JSON.parse(localStorage.getItem('articles')) || []
-function setCurrentArticle(article){
+
+const setCurrentArticle = (article)=>{
     const stringArticle = JSON.stringify(article)
     localStorage.setItem('currentBlog', stringArticle)
-    // window.location.href = ''
+    window.location.href = 'http://127.0.0.1:5500/HTML/article.html'
 }
 
 
@@ -32,6 +33,9 @@ const displayBlog = (article) =>{
     c_box.classList.add('c_box')
     const cover = document.createElement('img')
     cover.alt='article photo'
+    cover.addEventListener('click', () => {
+        setCurrentArticle(article)
+    })
     cover.src = article.cover;
 
     c_box.appendChild(cover)
@@ -43,14 +47,19 @@ const displayBlog = (article) =>{
 
     const category = document.createElement('p')
     category.classList.add('category')
-    category.style = 'color: var(--red); font-weight: bold; padding-bottom: -15px;'
+    category.style = 'font-weight: bold; padding-bottom: -15px;'
     category.innerHTML = article.category;
+    category.addEventListener('click', () => {
+        setCurrentArticle(article)
+    })
 
     c_desc.appendChild(category)
 
     const a_title = document.createElement('h2')
-    a_title.innerHTML = article.description
-
+    a_title.innerHTML = article.title;
+    a_title.addEventListener('click', () => {
+        setCurrentArticle(article)
+    })
     c_desc.appendChild(a_title)
 
     const date = document.createElement('p')

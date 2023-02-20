@@ -7,23 +7,24 @@ menu.addEventListener('click', () => {
 
 
 
-const name1 = document.getElementById('name').value
-const password = document.getElementById('password').value
+const name1 = document.querySelector('#name')
+const password = document.getElementById('password')
 const submit = document.getElementById('submit')
-
-
 
 function login () {
 
-    console.log(name1)
-    console.log(password)
+    const nameValue = name1.value.trim()
+    const passwordValue = password.value.trim()
 
-    if (name1 === 'gab' && password === 'gab'){
-        window.location.href = "http://127.0.0.1:5500/dashboard.html";
+    if (nameValue === 'Gabriel-mdv' && passwordValue === 'gabriel1'){
+        window.location.href = 'http://127.0.0.1:5500/dashboard.html'
     }
-    // else{
-    //     console.log('Wrong User information')
-    // }
+    
+
+    else{
+        alert('wrong user autentication')
+    }
+
 }
 
 

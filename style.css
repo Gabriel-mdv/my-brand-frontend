@@ -440,7 +440,7 @@ body{
     font-size: medium;
 
 }
-.form1 button{
+.form_button{
     text-decoration: none;
     color: var(--text);
     font-weight: bolder;
@@ -845,20 +845,19 @@ body{
 
 
 /* ------------ dashboard ---------------  */
+:root{
+    --dash: rgb(232, 235,239);
+}
 .dashboard{
     margin: 0;
     padding: 0;
 }
-.vertical{
-    position: absolute;
-    top: -20px;
-    
-}
+
 .vertical .list{
     list-style: none;
     transition: 500ms;
-    height: 100vh;
-    width: 250px;
+    height: 130vh;
+    width: 270px;
     background: transparent;
     color: var(--black);
     position: absolute;
@@ -866,11 +865,10 @@ body{
     overflow: hidden;
     border-right: 1px solid gray;
 }
-
 .list li{
     display: block;
     padding: 20px 10px;
-    background: rgb(232, 235,239);
+    background: var(--dash);
     border-radius: 5px;
     margin: 10px 5px;
     display: flex;
@@ -882,7 +880,13 @@ body{
     background: var(--green);
     cursor:pointer;
 }
-
+.dashboard{
+    position: relative;
+}
+.vertical{
+    position: fixed;
+    top: -20px;
+}
 #useless{
     background: white;
     padding: 60px 0;
@@ -892,6 +896,8 @@ body{
     background: white;
     box-shadow: 0 2px 10px rgb(177, 177, 177);
     position: fixed;
+    top:0;
+    right: 0;
     width: 100vw;
 }
 .horizontal .logo{
@@ -904,23 +910,229 @@ body{
 .list li .fa{
     font-size: larger;
     font-weight: bolder;
-    padding-right: 30px;
+    padding-right: 40px;
 }
 .active li{
     padding: 10px;
 }
 
+/* ---------- manage article ------------  */
+.manageArticles {
+    padding: 12vh 5vw 3vh 10vw;
+    overflow: hidden;
+}
+.manageArticles h1{
+    text-align: center;
+}
+
+#form2, #view_articles {
+    padding: 0 0 2vh 20%; 
+}
+#form2 input{
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 3vh;
+    border: none;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    background: var(--dash);
+    cursor: pointer;
+}
+#form2 textarea{
+    width: 100%;
+    background: var(--dash);
+    border: 1px solid rgb(187, 187, 187);
+    outline: none;
+    resize: none;
+    padding: 10px;
+    margin-bottom: 3vh;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    #form2 input{
+        width: 90%;
+    }
+    #form2 textarea{
+        width: 90%;
+    }
+    
+}
+#form2 span{
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+}
+#form2 span button{
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+#form2 span button:hover{
+    opacity: .8;
+}
+#form2 span :nth-child(1){
+    background: var(--green);
+    margin-right: 10px;
+}
+#form2 span :nth-child(2){
+    background: red;
+}
+#form2 select{
+    padding: 5px 10px;
+    margin-bottom: 3vh;
+    outline: none;
+}
+
+/* --------- view articles --  */
+.a_box {
+    width: 40%;
+    margin-top: 40px;
+}
+.a_box img{
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+}
+.a_box .action{
+    background: var(--dash);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -5px;
+}
+.a_box .action button{
+    border: none;
+    font-size: larger;
+}
+.a_box .action button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+#delete{
+    color: red;
+}
+#edit{
+    color: blue;
+}
+#a_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+@media (max-width: 600px) {
+    .a_box{
+        width: 90%;
+        margin-top: 30px;
+    }
+    #form2, #view_articles {
+        padding: 0 2vw 3vh 17vw; 
+    }
+    #preview{
+        width: 20%;
+    } 
+
+}
+
+
+/* --------------------------- all blogs ---------------------------------  */
+
+.all_blogs{
+    padding: 14vh 7% ;
+    overflow: hidden;
+}
+
+.blogs_heading{
+    padding: 2vh 7% 5vh 7%;
+}
+
+.c_box{
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 60px;
+
+}
+
+.c_box img{
+    min-width: 32vw;
+    max-width: 32vw;
+    height: auto;
+    padding-right: 40px;
+    padding-top: 16px;
+}
+.c_desc p{
+    margin-bottom: -10px;
+}
+
+@media (max-width: 600px) {
+    .c_box{
+        flex-wrap: wrap;
+    }
+    .c_box img{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .c_desc{
+        position: relative;
+    }
+    .c_desc .category{
+        position: absolute;
+        top: -40px;
+        z-index: 16;
+        background: white;
+        padding: 15px 15px 15px 0px;
+        border-top: 5px solid var(--black);
+    }
+}
 
 
 
-
-
-
-
-
-
-
-
+/* --------confirmatin __________  */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  
+  #confirmation-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  #button-container {
+    margin-top: 20px;
+  }
+  
+  #confirm-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+  }
+  
+  #cancel-button {
+    background-color: var(--green);
+    color: var(--black);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+  }
 
 
 
@@ -991,7 +1203,6 @@ body{
     }
 
 } */
-
 
 
 

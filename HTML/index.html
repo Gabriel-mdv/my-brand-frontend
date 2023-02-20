@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 
 
     <!-- ------ font awesome ---------- -->
@@ -25,11 +25,11 @@
         <div id="home">
             <div class="navbar">
                 <div class="logo">
-                    <img src="photos/logo1.png" alt="logo">
+                    <img src="../photos/logo1.png" alt="logo">
                     <p>JEAN GABRIEL</p>
                 </div>
 
-                <a href="#" class="menu">
+                <a href="#" class="menu" disabled>
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -40,7 +40,7 @@
                         <li class="list_item"><a href="#home">HOME</a></li>
                         <li class="list_item"><a href="#about">ABOUT</a></li>
                         <li class="list_item"><a href="#messages">CONTACT</a></li>
-                        <li class="list_item"><a href="article.html">BLOG</a></li>
+                        <li class="list_item"><a href="allblogs.html">BLOG</a></li>
                         <li class="list_item"><a href="login.html">LOGIN</a></li>
                     </ul>
                 </div>
@@ -247,7 +247,7 @@
                         developments, and never miss a beat by 
                         subscribing today</P>
 
-                    <form action="#" class="form2" onsubmit=subscribe()>
+                    <form class="form2" onsubmit = subscribe(event)>
                         <input type="text" id="sub1" placeholder="example@gmail.com">
                         <button type="submit"> SUBSCRIBE </button>
                     </form>
@@ -281,6 +281,6 @@
 
     </div>
 
-    <script src="app.js"></script>
+    <script src="../JS/app.js"></script>
 </body>
 </html>

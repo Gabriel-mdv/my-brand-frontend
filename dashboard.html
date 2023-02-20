@@ -6,6 +6,11 @@
 <!-- --------- font awesome cdn ----------  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- -------- googele fonts cdn -----  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -15,6 +20,19 @@
 </head>
 <body class="dashboard">
     
+    <!-- ________ confirmation _________  -->
+    <div id="overlay">
+        <div id="confirmation-message">
+          <h2>Are you sure you want to delete?</h2>
+          <p>This action cannot be undone.</p>
+          <div id="button-container">
+            <button id="confirm-button">Confirm</button>
+            <button id="cancel-button">Cancel</button>
+          </div>
+        </div>
+      </div>
+    
+
      <div class="nav1">
         <div class="horizontal">
             <div class="logo">
@@ -39,6 +57,47 @@
           </ul>
 
         </div>
+     </div>
+
+     <div class="manageArticles">
+        <h1>Add Article</h1>
+        <form action="#" id="form2">
+            <label for="a_title">Add Title: </label><br>
+            <input required type="text" id="a_title" placeholder="Title"><br>
+            <label for="a_desc">Add Description: </label><br>
+            <input required type="text" id="a_desc" placeholder="Description"><br>
+            <label for="a_category">Category:</label><br>
+            <select required id="a_category">
+                <option disabled selected>--Choose ----</option>
+                <option value="DATABASE WITH SUPABASE">DATABASE WITH SUPABASE</option>
+                <option value="PYTHON PROGRAMMING">PYTHON PROGRAMMING</option>
+                <option value="ELECTRONICS AND ENVIRONMENT">ELECTRONICS AND ENVIRONMENT</option>
+            </select><br>
+            <label for="a_content">Add Content:</label><br>
+            <textarea required id="a_content" cols="30" rows="10"></textarea><br>
+            <label for="cover">Cover image:</label><br>
+            <input required type="file"  id="cover">
+            <img id="preview" style="width: 345px;">
+            <span class="add">
+                <button type="submit" id="form2_sub">ADD ARTICLE</button>
+                <button type="reset">CANCEL</button>
+            </span>
+        </form>
+
+        <div id="view_articles">
+            <h1>View Articles</h1>
+            <div id="a_container">
+                <div class="a_box">
+                    <img src="/photos/anime.jfif" alt="artile cover">
+                    <div class="action">
+                        <button id="edit"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                        <button id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
      </div>
 
     <script src="/JS/dashboard.js"></script>

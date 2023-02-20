@@ -119,10 +119,15 @@ function success(element){
     console.log(element.value)    
 }
 
-sub1 = document.getElementById('sub1')
-subs = JSON.parse(localStorage.getItem('users')) || []
-function subscribe(){
-    users.push(user);
-    
+sub1 = document.getElementById('sub1').value.trim()
+
+subs = JSON.parse(localStorage.getItem('subs')) || []
+function subscribe(event){
+    event.preventDefault();
+    subs.push(sub1);
+    const stringsubs = JSON.stringify(subs);
+    localStorage.setItem('subs', stringsubs)
+
+    console.log(subs)
 }
 

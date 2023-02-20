@@ -13,7 +13,15 @@ menu.addEventListener('click', () => {
 const collection = document.getElementById('collection')
 console.log(collection)
 
+
+// ___________ setting up the local storage ______________- 
 articles = JSON.parse(localStorage.getItem('articles')) || []
+function setCurrentArticle(article){
+    const stringArticle = JSON.stringify(article)
+    localStorage.setItem('currentBlog', stringArticle)
+    // window.location.href = ''
+}
+
 
 console.log(articles)
 

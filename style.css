@@ -440,7 +440,7 @@ body{
     font-size: medium;
 
 }
-.form_button{
+#form_submit{
     text-decoration: none;
     color: var(--text);
     font-weight: bolder;
@@ -456,6 +456,7 @@ body{
     display: block;
     width: 100%;
     text-align: right;
+    
 }
 
 
@@ -490,6 +491,15 @@ body{
     
 }
 
+.snackbar {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
 
 /* ------------footer ------------- */
 .social2{
@@ -1133,6 +1143,8 @@ body{
     border-radius: 5px;
     border: none;
   }
+
+
 
 
 

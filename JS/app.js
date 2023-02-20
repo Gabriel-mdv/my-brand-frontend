@@ -66,8 +66,29 @@ buttons.forEach((button) => {
 const name1 = document.querySelector('#name');
 const email = document.querySelector('#email');
 const message = document.querySelector("#message");
+const snack = document.getElementsByClassName('snackbar')[0]
 let count = 0;
     
+function confirm(message, duration, background) {
+    // ______ create the message and its properties _________ 
+    const snackbar = document.createElement('div')
+    snackbar.classList.add('snackbar')
+    snackbar.innerHTML = message
+
+    // ______ show the message in the body ______________ 
+    snackbar.style.display = 'block'
+    snackbar.style.background = background
+
+    document.body.appendChild(snackbar)
+
+    // ________________ set the time out for the display to change_________ 
+    setTimeout(() => {
+        snackbar.style.display = 'none';
+        document.body.removeChild(snackbar);
+    }, duration)
+        
+
+}
 
 
 function sendMessage(event){
@@ -75,9 +96,6 @@ function sendMessage(event){
 
     validateInputs();
 
-    count % 3 === 0 ? (name1.value = "", email.value= message.value = ""):(
-        console.log("not all procceeced")
-    )
 }
 
 const emailIsValid = value => {
@@ -94,6 +112,13 @@ const validateInputs = () => {
     nameValue ? (success(name1)): error(name1, "*Enter your name please!");
     emailValue && emailIsValid(emailValue) ? (success(email)): error(email, "*Please enter a valid email!");
     messageValue ? (success(message)): error(message, "*Please enter a message")
+
+    if (nameValue && emailValue && messageValue){
+        name1.value = ""
+        email.value= '' 
+        message.value = ""
+        confirm('Your Message Was Successfully sent', 3000, 'green')
+    }
 }
 
 
@@ -130,4 +155,6 @@ function subscribe(event){
 
     console.log(subs)
 }
+
+// ---- snackbar ----
 

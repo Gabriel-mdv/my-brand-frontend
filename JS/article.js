@@ -32,6 +32,7 @@ function singleBlog(currentArticle) {
 const setCurrentArticle = (article)=>{
     const stringArticle = JSON.stringify(article)
     localStorage.setItem('currentBlog', stringArticle)
+    window.location.href = 'https://gabrielog.netlify.app/html/article.html'
     // window.location.href = 'http://127.0.0.1:5500/HTML/article.html'
 }
 

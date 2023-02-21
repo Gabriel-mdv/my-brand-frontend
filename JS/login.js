@@ -17,7 +17,8 @@ function login () {
     const passwordValue = password.value.trim()
 
     if (nameValue === 'Gabriel-mdv' && passwordValue === 'gabriel1'){
-        window.location.href = 'http://127.0.0.1:5500/dashboard.html'
+        // window.location.href = 'http://127.0.0.1:5500/dashboard.html'
+        window.location.href = 'https://gabrielog.netlify.app/dashboard.html';
     }
     
 

@@ -6,6 +6,13 @@ menu.addEventListener('click', () => {
 })
 
 
+// _______print ________________
+const print = document.getElementById('print');
+print.addEventListener('click', () => {
+    window.print();
+})
+
+
 // _______ cloning the local stoage ___________ 
 
 articles = JSON.parse(localStorage.getItem('articles')) || 'nothing'

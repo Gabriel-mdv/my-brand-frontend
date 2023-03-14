@@ -9,6 +9,11 @@ const overlay = document.getElementById('overlay')
 console.log(overlay)
 
 
+// ______ api and redirect url ____________ 
+const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
+
+
 // __________ delete user confirmation __________________ 
 const deleteUser= (deleteId) => {
     console.log(deleteId)
@@ -78,7 +83,7 @@ function singleUser (user){
 }
 
 function showUsers(){
-    fetch('http://127.0.0.1:4000/api/v1/messages')
+    fetch(`${api_url}/messages`)
         .then(response => {
             return response.json()
         })

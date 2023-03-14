@@ -62,6 +62,11 @@ buttons.forEach((button) => {
 });
 
 
+// ______ api and redirect url ____________ 
+const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
+
+
 
 
 // --------- getting the submitted data ----- 
@@ -121,7 +126,7 @@ const validateInputs = () => {
 
         const message = {name:nameValue, email: emailValue, content: messageValue}
 
-        fetch('http://127.0.0.1:4000/api/v1/messages', {
+        fetch(`${api_url}/messages`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

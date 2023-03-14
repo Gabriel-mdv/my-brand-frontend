@@ -8,6 +8,11 @@ menu.addEventListener('click', () => {
 
 
 
+// ______ api and redirect url ____________ 
+const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
+
+
 // ________ let us populate the all  blogs --------- 
 
 const collection = document.getElementById('collection')
@@ -18,7 +23,7 @@ console.log(collection)
 const setCurrentArticle = (id)=>{
     const blogId = JSON.stringify(id)
     localStorage.setItem('currentBlogId', blogId)
-    window.location.href = 'http://127.0.0.1:5501/HTML/article.html';
+    window.location.href = `${net_url}/HTML/article.html`;
 }
 
 //  _____ displaying a single blog on a row _____ 
@@ -80,7 +85,7 @@ const displayBlog = (article) =>{
 //  ______ fetching all blogs from from the database _____ 
 
 function allBlogs() {
-    fetch('http://127.0.0.1:4000/api/v1/blogs/')
+    fetch(`${api_url}blogs/`)
     .then((response) => {
         return response.json()
     })

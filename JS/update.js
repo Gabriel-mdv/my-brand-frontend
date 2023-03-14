@@ -5,6 +5,9 @@ menu.addEventListener('click', () => {
     nav.classList.toggle('active');
 })
 
+// ______ api and redirect url ____________ 
+const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
 
 
 // ------ getting input articles ------------ 
@@ -22,7 +25,7 @@ var form_status = 0
 var delId = null;
 
 const cancelUpdate = document.getElementById('cancelUpdate').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/dashboard.html'
+    window.location.href = `${net_url}/dashboard.html`
 })
 
 // image url ---------
@@ -68,7 +71,7 @@ console.log(blogId)
 
 
 // _________ no need to check the token ______ everyone can contribute _________ 
-fetch(`http://127.0.0.1:4000/api/v1/blogs/single/${blogId}`)
+fetch(`${api_url}/blogs/single/${blogId}`)
     .then((response) => {
         return response.json()
     })
@@ -101,7 +104,7 @@ fetch(`http://127.0.0.1:4000/api/v1/blogs/single/${blogId}`)
     console.log(article)
 
     // _____ fetch the api _____ 
-    fetch(`http://127.0.0.1:4000/api/v1/blogs/${blogId}`, {
+    fetch(`${api_url}/blogs/${blogId}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"
@@ -119,7 +122,7 @@ fetch(`http://127.0.0.1:4000/api/v1/blogs/single/${blogId}`)
             // alert(data..)
         if(data.ok){
             confirm("Your blog was successfully updated", 5000, "green")
-            window.location.href = 'http://127.0.0.1:5501/dashboard.html';
+            window.location.href = `${net_url}/dashboard.html`;
         }
         else{
             confirm(data.message, 5000, "red")

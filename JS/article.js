@@ -6,6 +6,11 @@ menu.addEventListener('click', () => {
 })
 
 
+// ______ api and redirect url ____________ 
+const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
+
+
 // _______print ________________
 const print = document.getElementById('print');
 print.addEventListener('click', () => {
@@ -17,7 +22,7 @@ print.addEventListener('click', () => {
 const setCurrentArticle = (id)=>{
     const blogId = JSON.stringify(id)
     localStorage.setItem('currentBlogId', blogId)
-    window.location.href = 'http://127.0.0.1:5501/HTML/article.html';
+    window.location.href = `${net_url}/HTML/article.html`;
 }
 
 
@@ -87,7 +92,7 @@ function allArticles() {
     const blog_image = document.getElementsByClassName('blog_image')[0]
     const blog_content = document.getElementsByClassName('blog_content')[0]
 
-    fetch('http://127.0.0.1:4000/api/v1/blogs/')
+    fetch(`${api_url}/blogs`)
     .then((response) => {
         return response.json()
     })
@@ -128,7 +133,6 @@ function allArticles() {
 
 allArticles
 articles = allArticles() 
-console.log(articlesArray)
 console.log(articles)
 
 console.log("we are here")
@@ -149,11 +153,11 @@ console.log("we are here")
 
 
 
-if(currentArticle === 0){
-    document.getElementsByClassName('single_blog')[0].innerHTML = "<h1>NO Articles is present in the local storage. Navigate to the dashboard to add one!</h1>"
-}else{
-       singleBlog(currentArticle);
-}
+// if(currentArticle === 0){
+//     document.getElementsByClassName('single_blog')[0].innerHTML = "<h1>NO Articles is present in the local storage. Navigate to the dashboard to add one!</h1>"
+// }else{
+//        singleBlog(currentArticle);
+// }
 
 
 

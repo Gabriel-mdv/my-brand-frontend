@@ -85,7 +85,7 @@ const displayBlog = (article) =>{
 //  ______ fetching all blogs from from the database _____ 
 
 function allBlogs() {
-    fetch(`${api_url}blogs/`)
+    fetch(`${api_url}/blogs`)
     .then((response) => {
         return response.json()
     })

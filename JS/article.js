@@ -12,36 +12,18 @@ print.addEventListener('click', () => {
     window.print();
 })
 
-
-// _______ cloning the local stoage ___________ 
-
-articles = JSON.parse(localStorage.getItem('articles')) || 'nothing'
-
-const currentArticle = JSON.parse(localStorage.getItem('currentBlog')) || 0
-
-
-// _________ build single blog______________
-const category = document.getElementsByClassName('category')[0]
-const blog_title = document.getElementsByClassName('blog_title')[0]
-const date = document.getElementsByClassName('date')[0]
-const blog_image = document.getElementsByClassName('blog_image')[0]
-const blog_content = document.getElementsByClassName('blog_content')[0]
-
-function singleBlog(currentArticle) {
-    category.innerHTML = currentArticle.category;
-    blog_title.innerHTML = currentArticle.title;
-    date.innerHTML = currentArticle.date;
-    blog_image.src = currentArticle.cover;
-    blog_content.innerHTML = currentArticle.content;
-}
-
 // ---------------change currentArticle _________
-const setCurrentArticle = (article)=>{
-    const stringArticle = JSON.stringify(article)
-    localStorage.setItem('currentBlog', stringArticle)
-    window.location.href = 'https://gabrielog.netlify.app/html/article.html'
-    // window.location.href = 'http://127.0.0.1:5500/HTML/article.html'
+// ____ setting the current blogs ___   
+const setCurrentArticle = (id)=>{
+    const blogId = JSON.stringify(id)
+    localStorage.setItem('currentBlogId', blogId)
+    window.location.href = 'http://127.0.0.1:5501/HTML/article.html';
 }
+
+
+
+// // _______ cloning the local stoage ___________ 
+// articles = JSON.parse(localStorage.getItem('articles')) || 'nothing'
 
 
 // __________ suggested _________________ 
@@ -51,17 +33,12 @@ const desc4_learn = document.getElementById('desc4_learn')
 const desc4_image = document.getElementById('desc4_image')
 
 
-function suggested(){
-    desc4_text.innerHTML = articles[articles.length-1].title;
-    desc4_desc.innerHTML = articles[articles.length-1].description;
-    desc4_learn.addEventListener('click', ()=> setCurrentArticle(articles[articles.length-1]))
-    desc4_image.src = articles[articles.length-1].cover
+function suggested(articles){
+    desc4_text.innerHTML = articles[articles.length-2].title;
+    desc4_desc.innerHTML = articles[articles.length-2].description;
+    desc4_learn.addEventListener('click', ()=> setCurrentArticle(articles[articles.length-2]._id))
+    desc4_image.src = articles[articles.length-2].image_url
 }
-
-if (articles.length > 1){
-    suggested()
-}
-
 
 
 // ___________________ related content_____________________
@@ -75,7 +52,7 @@ function related(article){
     desc_rel.classList.add('desc_rel')
     // ______short desc content ___________ 
     const image = document.createElement('img')
-    image.src = article.cover;
+    image.src = article.image_url;
 
     desc_rel.appendChild(image)
     
@@ -92,19 +69,84 @@ function related(article){
     rel_item.appendChild(h3)
 
     rel_item.addEventListener('click', ()=> {
-        setCurrentArticle(article)
+        setCurrentArticle(article._id)
     })
 
     container_rel.appendChild(rel_item)
 }
 
-const related_articles = articles.slice(-3)
 
-related_articles.forEach(article => {
 
-        related(article)
+// ____ fetch all blogs _______ 
+function allArticles() {
+
+    // _________ build single blog______________
+    const category = document.getElementsByClassName('category')[0]
+    const blog_title = document.getElementsByClassName('blog_title')[0]
+    const date = document.getElementsByClassName('date')[0]
+    const blog_image = document.getElementsByClassName('blog_image')[0]
+    const blog_content = document.getElementsByClassName('blog_content')[0]
+
+    fetch('http://127.0.0.1:4000/api/v1/blogs/')
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => {
+        const articles = data.data
+
+        console.log(articles)
+        
+        const currentBlogId = JSON.parse(localStorage.getItem('currentBlogId'))
+        console.log(currentBlogId)
+        const currentArticle = articles.find((article) => article._id === currentBlogId) || 0
+        
+        console.log(currentArticle)
+
+
+        // ____ single blog contente specification _____ 
+        category.innerHTML = currentArticle.category;
+        blog_title.innerHTML = currentArticle.title;
+        date.innerHTML = currentArticle.createdAt;
+        blog_image.src = currentArticle.image_url;
+        blog_content.innerHTML = currentArticle.content;
+
+        if(articles.length > 1){
+            suggested(articles)
+        }
+
+        const related_articles = articles.slice(-3)
+
+            related_articles.forEach(article => {
+
+            related(article)
     
-})
+        })
+        
+    })
+    .catch(e => alert(e))
+}
+
+allArticles
+articles = allArticles() 
+console.log(articlesArray)
+console.log(articles)
+
+console.log("we are here")
+
+// ____ find the current article in all articles ______ 
+// const currentBlogId = localStorage.getItem('currentBlogId') || 0
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if(currentArticle === 0){

@@ -6,27 +6,72 @@ menu.addEventListener('click', () => {
 })
 
 
+// ____ success or error message ________ 
+function confirm(message, duration, background) {
+    // ______ create the message and its properties _________ 
+    const snackbar = document.createElement('div')
+    snackbar.classList.add('snackbar')
+    snackbar.innerHTML = message
 
-const name1 = document.querySelector('#name')
-const password = document.getElementById('password')
-const submit = document.getElementById('submit')
+    // ______ show the message in the body ______________ 
+    snackbar.style.display = 'block'
+    snackbar.style.background = background
 
-function login () {
+    document.body.appendChild(snackbar)
 
-    const nameValue = name1.value.trim()
-    const passwordValue = password.value.trim()
-
-    if (nameValue === 'Gabriel-mdv' && passwordValue === 'gabriel1'){
-        // window.location.href = 'http://127.0.0.1:5500/dashboard.html'
-        window.location.href = 'https://gabrielog.netlify.app/dashboard.html';
-    }
-    
-
-    else{
-        alert('wrong user autentication')
-    }
-
+    // ________________ set the time out for the display to change_________ 
+    setTimeout(() => {
+        snackbar.style.display = 'none';
+        document.body.removeChild(snackbar);
+    }, duration)
 }
 
 
-submit.onclick = login;
+// ____ LOGIN FORM __
+const input_form = document.getElementsByClassName('form')[0]
+
+
+
+function accessUsers() {
+    const email1 = document.querySelector('#email')
+    const password1 = document.getElementById('password')
+    const submit = document.getElementById('submit')
+
+
+    const user = {email: email1.value.trim(), password: password1.value.trim()}
+
+    console.log("users")
+    fetch('http://127.0.0.1:4000/api/v1/users/login',{
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+}
+)
+.then((response) => {
+    console.log(response)
+    return response.json()
+
+})
+.then((data) => {
+    console.log(data)
+    console.log(data.data)
+    document.cookie = 
+    document.cookie = `token=${data.token}; Path=/;`;
+    if(! data.data){
+        
+        confirm(data.message, 3000, 'red')
+    }
+    else{
+        window.location.href = 'http://127.0.0.1:5501/dashboard.html';
+    }
+})
+
+}
+
+input_form.onsubmit = (event) => {
+    event.preventDefault()
+    console.log("submit")
+    accessUsers()
+}

@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,10 +40,10 @@
      <div class="nav1">
         <div class="horizontal" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="logo">
-                <a href="/HTML/login.html"><img src="photos/logo1.png" alt="logo"></a>
+                <img src="../photos/logo1.png" alt="logo">
                 <p>JEAN GABRIEL</p>
             </div>
-            <button id="logout" class="btn btn-danger p-0 mt-3" style="height: 30px; margin-right: 20px; cursor: pointer;">Logout</button>
+            <button type="submit" class="btn btn-danger p-0 mt-3" style="height: 30px; margin-right: 20px;">Logout</button>
 
         </div>
         <div class="vertical">
@@ -57,55 +57,42 @@
             </li>
             <a href="../dashboard.html"><li><i class="fa fa-newspaper-o" aria-hidden="true"></i> BLOGS</li></a>
             <a href=""><li><i class="fa fa-briefcase" aria-hidden="true"></i> PROJECTS</li></a>
-            <a href="./HTML/messages.html"><li><i class="fa fa-comments" aria-hidden="true"></i> Messages</li></a>
+            <a href=""><li><i class="fa fa-comments" aria-hidden="true"></i> COMMENTS</li></a>
             <a href=""><li><i class="fa fa-graduation-cap" aria-hidden="true"></i> SKILLS</li></a>
-            <a href="./HTML/users.html"><li><i class="fa fa-users" aria-hidden="true"></i> USERS </li></a>
+            <a href="users.html"><li><i class="fa fa-users" aria-hidden="true"></i> USERS </li></a>
           </ul>
 
         </div>
      </div>
 
      <div class="manageArticles">
-        <h1>Add Article</h1>
+        <h1>Update Article</h1>
         <form action="#" id="form2">
             <label for="a_title">Add Title: </label><br>
-            <input required type="text" id="a_title" placeholder="Title"><br>
+            <input  type="text" id="a_title" placeholder="Title"><br>
             <label for="a_desc">Add Description: </label><br>
-            <input required type="text" id="a_desc" placeholder="Description"><br>
+            <input type="text" id="a_desc" placeholder="Description"><br>
             <label for="a_category">Category:</label><br>
-            <select required id="a_category">
+            <select id="a_category">
                 <option disabled selected>--Choose ----</option>
                 <option value="DATABASE WITH SUPABASE">DATABASE WITH SUPABASE</option>
                 <option value="PYTHON PROGRAMMING">PYTHON PROGRAMMING</option>
                 <option value="ELECTRONICS AND ENVIRONMENT">ELECTRONICS AND ENVIRONMENT</option>
             </select><br>
             <label for="a_content">Add Content:</label><br>
-            <textarea required id="a_content" cols="30" rows="10"></textarea><br>
+            <textarea id="a_content" cols="30" rows="10"></textarea><br>
             <label for="cover">Cover image:</label><br>
-            <input required type="file"  id="cover">
+            <input type="file"  id="cover">
             <img id="preview" style="width: 345px;">
             <span class="add">
-                <button type="submit" id="form2_sub">ADD ARTICLE</button>
-                <button type="reset">CANCEL</button>
+                <button type="submit" id="form2_sub">UPDATE</button>
+                <button type="reset" id="cancelUpdate">CANCEL</button>
             </span>
         </form>
 
-        <div id="view_articles">
-            <h1>View Articles</h1>
-            <div id="a_container">
-                <div class="a_box">
-                    <img src="/photos/anime.jfif" alt="artile cover">
-                    <div class="action">
-                        <button id="edit"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
-                        <button id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
      </div>
 
-    <script src="/JS/dashboard.js"></script>
+    <script src="../JS/update.js"></script>
 </body>
 </html>

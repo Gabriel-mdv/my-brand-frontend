@@ -62,6 +62,8 @@ buttons.forEach((button) => {
 });
 
 
+
+
 // --------- getting the submitted data ----- 
 const name1 = document.querySelector('#name');
 const email = document.querySelector('#email');
@@ -114,9 +116,30 @@ const validateInputs = () => {
     messageValue ? (success(message)): error(message, "*Please enter a message")
 
     if (nameValue && emailValue && messageValue){
+        
+        // __________ send our message here after validation ____ 
+
+        const message = {name:nameValue, email: emailValue, content: messageValue}
+
+        fetch('http://127.0.0.1:4000/api/v1/messages', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message)
+        })
+        .then((response) => {
+            return response.json()
+
+        })
+        .then((data) => {
+            console.log("message sent")
+        })
+
         name1.value = ""
         email.value= '' 
         message.value = ""
+
         confirm('Your Message Was Successfully sent', 3000, 'green')
     }
 }
@@ -156,5 +179,6 @@ function subscribe(event){
     console.log(subs)
 }
 
-// ---- snackbar ----
+
+// now fetch and send the messagend to the backend using a post request _____ 
 

@@ -386,6 +386,7 @@ body{
     
 }
 
+/* ________ messages ________--  */
 
 #messages{
     background:  whitesmoke;
@@ -421,6 +422,7 @@ body{
     border: none;
     background: var(--lightgray);
     width: 105%;
+    height: 17vh;
     padding: 20px 20px;
     box-sizing: border-box;
     /* padding: 5px 20px; */
@@ -499,6 +501,7 @@ body{
     color: white;
     padding: 10px;
     border-radius: 5px;
+    display: none;
 }
 
 /* ------------footer ------------- */
@@ -575,7 +578,7 @@ body{
 
 .form{
     width: 250px;
-    height: 330px;
+    height: 380px;
     color: var(--black);
     /* background: black; */
     background: #fff;
@@ -584,7 +587,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 40px;
+    padding: 7px 40px 20px 40px;
     border-radius: 10px;
 }
 .form h1{
@@ -870,7 +873,7 @@ body{
     transition: 500ms;
     height: 130vh;
     width: 270px;
-    background: transparent;
+    background: white;
     color: var(--black);
     position: absolute;
     padding: 0;
@@ -887,6 +890,10 @@ body{
     transition: 400ms;
     flex-wrap: nowrap;
 }
+.list li a{
+    text-decoration: none;
+    color: black;
+}
 .list li:hover,
 .list li:focus{
     background: var(--green);
@@ -897,12 +904,12 @@ body{
 }
 .vertical{
     position: fixed;
+    z-index: 16;
     top: -20px;
 }
 #useless{
-    background: white;
     padding: 60px 0;
-    opacity: .5;
+    background: transparent;
 }
 .horizontal{
     background: white;
@@ -911,9 +918,14 @@ body{
     top:0;
     right: 0;
     width: 100vw;
+    z-index: 16;
 }
 .horizontal .logo{
     padding-left: 60px;
+}
+.list a{
+    text-decoration: none;
+    color: black;
 }
 
 .list.active{
@@ -997,6 +1009,7 @@ body{
     outline: none;
 }
 
+
 /* --------- view articles --  */
 .a_box {
     width: 40%;
@@ -1049,6 +1062,15 @@ body{
 
 }
 
+/* ______________-- USERS _______________--   */
+#userContainers{
+    width: 60%;
+}
+@media (max-width: 700) {
+    #userContainers{
+        min-width: 80%;
+    }
+}
 
 /* --------------------------- all blogs ---------------------------------  */
 

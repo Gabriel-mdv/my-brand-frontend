@@ -6,6 +6,11 @@ menu.addEventListener('click', () => {
 })
 
 
+// ______ api and redirect url ____________ 
+const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
+
+
 // ____ success or error message ________ 
 function confirm(message, duration, background) {
     // ______ create the message and its properties _________ 
@@ -41,7 +46,7 @@ function accessUsers() {
     const user = {email: email1.value.trim(), password: password1.value.trim()}
 
     console.log("users")
-    fetch('http://127.0.0.1:4000/api/v1/users/login',{
+    fetch(`${api_url}/users/login`,{
     method: 'POST',
     headers: {
         "Content-Type": "application/json"
@@ -64,7 +69,7 @@ function accessUsers() {
         confirm(data.message, 3000, 'red')
     }
     else{
-        window.location.href = 'http://127.0.0.1:5501/dashboard.html';
+        window.location.href = `${net_url}/dashboard.html`;
     }
 })
 

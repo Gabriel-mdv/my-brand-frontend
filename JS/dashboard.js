@@ -14,11 +14,12 @@ const token = getCookie('token')
 
 // ______ api and redirect url ____________ 
 const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
+const net_url = 'https://gabrielog.netlify.app'
 
 if (token == null) {
     // If cookie doesn't exist, redirect to login page or display error message
     document.body.innerHTML = '<h1>You are not Allowed to access this page. Login First</>'
-    window.location.href = 'http://127.0.0.1:5501/HTML/login.html';
+    window.location.href = `${net_url}/HTML/login.html`;
 }
 
 // else{
@@ -39,7 +40,7 @@ function logout() {
     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   
     // Redirect to login page
-    window.location.href = 'http://127.0.0.1:5501/HTML/login.html';
+    window.location.href = `${net_url}/HTML/login.html`;
 }
 
 document.getElementById('logout').addEventListener('click', () => {
@@ -191,7 +192,7 @@ const  viewArticles = () => {
                 edit1.onclick = () => {
                     console.log(`editing ${article._id}`)
                   localStorage.setItem('updateId', JSON.stringify(article._id))
-                  window.location.href = 'http://127.0.0.1:5501/hTML/update.html'
+                  window.location.href = `${net_url}/HTML/update.html`
         
                 }
                 action.appendChild(edit1)
@@ -252,7 +253,7 @@ form2.onsubmit = (event) => {
             // alert(data..)
            if(data.ok){
             confirm("Your blog was successfully added", 5000, "green")
-            // window.location.href = 'http://127.0.0.1:5501/dashboard.html';
+            window.location.href = `${net_url}/dashboard.html`;
            }
            else{
             confirm(data.message, 5000, "red")

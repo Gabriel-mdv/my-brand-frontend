@@ -62,6 +62,7 @@ const net_url = 'https://gabrielog.netlify.app'
 const name1 = document.querySelector('#name');
 const email = document.querySelector('#email');
 const message = document.querySelector("#message");
+const message1 = message
 const snack = document.getElementsByClassName('snackbar')[0]
 let count = 0;
     
@@ -132,7 +133,7 @@ const validateInputs = () => {
 
         name1.value = ""
         email.value= '' 
-        message.value = ""
+        message1.value = ""
 
         confirm('Your Message Was Successfully sent', 3000, 'green')
     }

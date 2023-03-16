@@ -9,6 +9,7 @@ menu.addEventListener('click', () => {
 // ______ api and redirect url ____________ 
 const api_url = 'https://lonely-cod-polo-shirt.cyclic.app/api/v1'
 const net_url = 'https://gabrielog.netlify.app'
+const currentBlogId = JSON.parse(localStorage.getItem('currentBlogId'))
 
 
 // _______print ________________
@@ -118,9 +119,6 @@ function allArticles() {
     })
     .then((data) => {
         const articles = data.data
-
-        const currentBlogId = JSON.parse(localStorage.getItem('currentBlogId'))
-        console.log(currentBlogId)
         const currentArticle = articles.find((article) => article._id === currentBlogId) || 0
         
 
@@ -160,13 +158,128 @@ console.log(articles)
 // ____ find the current article in all articles ______ 
 // const currentBlogId = localStorage.getItem('currentBlogId') || 0
 
+// ____ success or error message ________ 
+function confirm(message, duration, background) {
+    // ______ create the message and its properties _________ 
+    const snackbar = document.createElement('div')
+    snackbar.classList.add('snackbar')
+    snackbar.innerHTML = message
+
+    // ______ show the message in the body ______________ 
+    snackbar.style.display = 'block'
+    snackbar.style.background = background
+
+    document.body.appendChild(snackbar)
+
+    // ________________ set the time out for the display to change_________ 
+    setTimeout(() => {
+        snackbar.style.display = 'none';
+        document.body.removeChild(snackbar);
+    }, duration)
+}
+
+
+// ___________- comments _______________-- 
+
+const name2 = document.getElementById("name")
+const email = document.getElementById("email")
+const comment = document.getElementById("comment")
+const commentForm = document.getElementById('commentForm')
+
+// submitComment________________-- 
+
+commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const commentToSubmit ={
+        name: name2.value,
+        email: email.value,
+        comment: comment.value,
+        blogId: currentBlogId
+    } 
+    console.log(commentToSubmit)
+
+    fetch(`${api_url}/comments`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(commentToSubmit)
+    })
+    .then((response) => {
+        return response.json()
+    })
+    .then(data => {
+        console.log(data.message)
+        console.log('message')
+        confirm('Comment Was Successfully Added', 3000, 'green')
+        name2.value= ""
+        email.value= ""
+        comment.value= ""
+        blogComments()
+
+    })
+    .catch(e => confirm(e+ " try again", 3000, 'red'))
+
+    
+})
+
+
+
+// __________ fetech the commetns for each blog___________  
+
+const blogComments = async() => {
+
+    console.log(currentBlogId)
+    const commentSection = document.getElementsByClassName('comment-widgets')[0]
+
+    if(commentSection.hasChildNodes()) commentSection.innerHTML = ''
+
+    
+    await fetch(`${api_url}/comments/${currentBlogId}`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data.data)
+            const comments = data.data
+
+            // _____ populate the commentes________ 
+
+            comments.forEach(comment => {
+                const singleComment = `<div class="d-flex flex-row comment-row">
+                <div class="p-2"><span class="round"><img src="../photos//flower.jfif" alt="user" width="50"></span></div>
+                <div class="comment-text w-100">
+                    <h5>${comment.name}</h5>
+                    <span class="date">${comment.email}</span>
+                    <div class="comment-footer">
+                        <span class="date">${comment.createdAt.toLocaleString()}</span>
+                         <span class="action-icons">
+                
+                                <a href="#" data-abc="true"><i class="fa fa-heart"></i></a>
+                            </span>
+                    </div>
+                    <p class="m-b-5 m-t-10">${comment.content}</p>
+                </div>
+                </div>`
+
+                commentSection.innerHTML += singleComment;
+                
+            })
+            
 
 
 
 
 
 
+        })
 
+        .catch(e => console.log(e))
+
+      
+}
+
+blogComments()
 
 
 

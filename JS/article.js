@@ -17,7 +17,8 @@ print.addEventListener('click', () => {
     window.print();
 })
 
-
+const loading = document.getElementById('loading')
+const single_blog = document.getElementsByClassName('single_blog')[0]
 
 // _________ shere article ___________ 
 const facebookBtn = document.getElementById('facebookBtn')
@@ -133,6 +134,9 @@ function allArticles() {
         // _______ activate share ____ 
         init(currentArticle)
 
+        // single_blog.style.visibility= 'unset'
+        // loading.style.display = 'none'
+
         if(articles.length > 1){
             suggested(articles)
         }
@@ -146,7 +150,7 @@ function allArticles() {
         })
         
     })
-    .catch(e => alert(e))
+    .catch(e => alert("Please wait to see the Blogs"))
 }
 
 allArticles

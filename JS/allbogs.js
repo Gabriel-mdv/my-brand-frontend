@@ -98,7 +98,7 @@ function allBlogs() {
             
         });
     })
-    .catch(e => alert(e))
+    .catch(e => alert("You could have waited for a moment"))
 
 }
 

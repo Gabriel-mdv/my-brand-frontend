@@ -662,7 +662,7 @@ body{
 }
 
 .suggested img{
-    width: 100%;
+    width: 30%;
     height: auto;
 }
 @media (max-width: 700px) {

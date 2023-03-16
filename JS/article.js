@@ -17,6 +17,25 @@ print.addEventListener('click', () => {
     window.print();
 })
 
+
+
+// _________ shere article ___________ 
+const facebookBtn = document.getElementById('facebookBtn')
+const whatsappBtn = document.getElementById('whatsappBtn')
+const instagramBtn = document.getElementById('instaBtn')
+
+function init(article){
+    // const pintImage = document.querySelector('.pinterest_image');
+    let postUrl = encodeURI(document.location.href)
+    // let postTitle = document.querySelector('h1')
+    // let postImage = encodeURI(article.image_url)
+    facebookBtn.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}`)
+    whatsappBtn.setAttribute("href", `https://api.whatsapp.com/send?text=${article.title} ${postUrl}`)
+    // linkedinBtn.setAttribute("href", `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`)
+    instagramBtn.setAttribute("href", `https://api.whatsapp.com/send?text=${article.title} ${postUrl}`)
+    // pinterestBtn.setAttribute("href", `https://pinterest.com/pin/create/bookmarklet/?media=${pintImage}&url=${postUrl}&description=${postTitle}`)  
+}
+
 // ---------------change currentArticle _________
 // ____ setting the current blogs ___   
 const setCurrentArticle = (id)=>{
@@ -99,14 +118,10 @@ function allArticles() {
     .then((data) => {
         const articles = data.data
 
-        console.log(articles)
-        
         const currentBlogId = JSON.parse(localStorage.getItem('currentBlogId'))
         console.log(currentBlogId)
         const currentArticle = articles.find((article) => article._id === currentBlogId) || 0
         
-        console.log(currentArticle)
-
 
         // ____ single blog contente specification _____ 
         category.innerHTML = currentArticle.category;
@@ -114,6 +129,9 @@ function allArticles() {
         date.innerHTML = currentArticle.createdAt;
         blog_image.src = currentArticle.image_url;
         blog_content.innerHTML = currentArticle.content;
+
+        // _______ activate share ____ 
+        init(currentArticle)
 
         if(articles.length > 1){
             suggested(articles)
@@ -134,8 +152,6 @@ function allArticles() {
 allArticles
 articles = allArticles() 
 console.log(articles)
-
-console.log("we are here")
 
 // ____ find the current article in all articles ______ 
 // const currentBlogId = localStorage.getItem('currentBlogId') || 0
